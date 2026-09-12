@@ -1,0 +1,11 @@
+<svg width="100" height="300"><rect id="water" x="0" width="100" fill="steelblue"/></svg>
+<script>
+setInterval(async () => {
+  const r = await fetch('status.json?' + Date.now());
+  const { level } = await r.json();
+  const h = (level / 1000) * 300;
+  const rect = document.getElementById('water');
+  rect.setAttribute('height', h);
+  rect.setAttribute('y', 300 - h);
+}, 500);
+</script>
